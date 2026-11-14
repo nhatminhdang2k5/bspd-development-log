@@ -1,0 +1,25 @@
+14.11.2026
+Anforderungen:
+- Neue Regeln: Alle Signalpfäden müssen jetzt individuell unterbrechbar
+  Bremsesignale sind schon regelnkonform, aber Halleffekt-Sensor wird direkt aufs Platine gelötet (nicht mehr regelnkonform)
+- Komponentensicherheit: Keine Filterung/Überstrom/Überspannungsschutz
+- Shutdown Circuit Signal: Hier noch keine Signalschutz, Abhängigkeit von MOSFETs (wäre eine Katastrophe wenn es brennt...)
+
+Probleme:
+- PCB sehr kompakt (kein Platz für Leitungen oder neue Komponenten...)
+- Layout soll "gut" aussehen (kein Spaghetti-Schema)
+- Sponsoren: Nur Komponenten von Sponsoren nutzen (wir sind nicht TU München)
+
+REVISION 1
+- Lösung für Regelnkonformität: Jumper Pins
+- Implementierung:
+  +5mm Höhe zur Extraplatz
+  Komponent im Lage gefunden (keine Bestellungen benötigt)
+
+Feedbacks vom Alumni:
+- Jumper Pins nicht empfohlen
+- Alternativ: DIP-Switch oder auch größere mechanische Switches, auf der Rückseite
+- Verbesserungen: Rauschefilterung, Schutzdioden
+
+*CRITICAL* Bei Unterbrechung der 
+  
