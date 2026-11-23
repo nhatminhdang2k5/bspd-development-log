@@ -10,6 +10,8 @@ Probleme:
 - Layout soll "gut" aussehen (kein Spaghetti-Schema)
 - Sponsoren: Nur Komponenten von Sponsoren nutzen (wir sind nicht TU München)
 
+----------------------------------
+
 REVISION 1
 - Lösung für Regelnkonformität: Jumper Pins
 - Implementierung:
@@ -21,5 +23,50 @@ Feedbacks vom Alumni:
 - Alternativ: DIP-Switch oder auch größere mechanische Switches, auf der Rückseite
 - Verbesserungen: Rauschefilterung, Schutzdioden
 
-*CRITICAL* Bei Unterbrechung der 
+*CRITICAL* Bei Unterbrechung des Stromsensors muss ein SCS-Fehler auftreten (öffnet SDC)
+
+Zusammenfassung Rev 1 - TODO:
+- DIP-Switch statt Jumper Pins
+- SCS-Check für Stromsignal
+- Rauschfilterung, TVS-Schutz für Bremssignale
+
+----------------------------------
+
+REVISION 2
+Durchführung
+- DIP-Switch: Rückseite des BSPD, um weiteren Unordnungen zu vermeiden
+- SCS-Check Idee:
+  Stromsensor relativ spannungsstabil (Ausgang min. 2.5V, Überstrom 2.65V); Fehlzustand entweder 0V oder High-Z
+  Vorgehen: Stromsensorsignal als Boolean, mit Pull-Down
+  Sensor 0V - 2.65V -> OpAmp 0V oder 5V -> Multiplexer (Steuerung)
+  Neue Komponente: 2x Gain OpAmp, 2:1 Multiplexer
+- Rauschfilterung für Bremssignale: RC Tiefpass
+- TVS Schutz: 6.1V TVS Diode
+
+Interimpräsentation 1
+Feedbacks und Empfehlungen:
+- Open-Drain Komparator kann Multiplexer und OpAmp gut ersetzen
+- Soll 24V TVS Diode benutzen
+- Stromsensor soll jetzt von der BSPD getrennt werden, Verbindung durch Kabeln wie Bremssensor
+- SDC soll mithilfe eines Smart High Side Switch an/ausgeschaltet werden, statt 2 MOSFETs
+- Einige Komponente ersetzen wegen Sponsoring
+Folgerungen und TODOs:
+- Struktur des BSPD stark geändert mit vielen Bauteilen zu entfernen oder ersetzen => Layout Redesign vielleicht erforderlich
+- DIP-Switch nicht mehr nützlich (jetzt kann man einfach das Connector rausziehen)
+- Stromsensorsignal ist nun Wire-To-Board Signal (Signalschutzverfahren erforderlich)
+- Neue Ersatzkomponenten gesucht => mehr Datasheets! :D
+
+----------------------------------
+
+REVISION 3
+Durchführung
+- Ersatzkomponenten: 2x Open Collector Komparator statt Window Voltage Monitor
+- Andere Hersteller für vorhandene OpAmps und Komparatoren (Texas Instruments => STMicroelectronics)
+- 24V TVS Diode statt 6.1V (Würth Elektronik)
+- Smart High Side Switch statt MOSFETs (sehr große Bauteil)
+- PCB-Logik konzeptuell sehr ähnlich zu ältere Designs
+- PCB-Layout komplett vom Anfang entwickelt (Screenshot auch im Repo vorhanden)
+
+-- Präsenz: Warte auf Feedbacks von Leiter und Alumni
+
   
