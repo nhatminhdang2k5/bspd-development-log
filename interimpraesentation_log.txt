@@ -31,6 +31,7 @@ Zusammenfassung Rev 1 - TODO:
 - Rauschfilterung, TVS-Schutz für Bremssignale
 
 ----------------------------------
+17.11.2026
 
 REVISION 2
 Durchführung
@@ -57,6 +58,7 @@ Folgerungen und TODOs:
 - Neue Ersatzkomponenten gesucht => mehr Datasheets! :D
 
 ----------------------------------
+23.11.2026
 
 REVISION 3
 Durchführung
